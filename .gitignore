@@ -1,0 +1,7 @@
+# Vídeos de fundo (pesados) — ficam só no servidor, não versionados.
+# Os presets "Vídeo 1/2" só aparecem onde os arquivos existirem em media/.
+*.mp4
+
+# temporários
+*.log
+.DS_Store

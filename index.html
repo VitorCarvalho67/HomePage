@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#0b0b12">
+	<title>Home</title>
+	<link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+	<link rel="shortcut icon" href="media/firefox.png" type="image/png">
+	<link rel="stylesheet" href="assets/style.css?v=4">
+</head>
+<body>
+	<!-- ===== Fundo (vídeo OU imagem OU gradiente) ===== -->
+	<div id="bg-layer">
+		<video id="bg-video" autoplay loop muted playsinline></video>
+		<img id="bg-image" alt="">
+	</div>
+	<div id="bg-overlay"></div>
+
+	<!-- ===== Conteúdo central ===== -->
+	<main id="stage">
+		<header id="hero">
+			<div id="clock">--:--</div>
+			<div id="greeting">Olá</div>
+		</header>
+
+		<form id="search-form" autocomplete="off" novalidate>
+			<div class="search-box">
+				<svg class="search-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<path d="M14.5 13h-.79l-.28-.27a6.47 6.47 0 1 0-.7.7l.27.28v.79l4.25 4.25a1 1 0 0 0 1.41-1.41L14.5 13zm-6 0a4.5 4.5 0 1 1 4.5-4.5A4.5 4.5 0 0 1 8.5 13z"/>
+				</svg>
+				<div class="search-field">
+					<input type="text" id="search-input" name="q" spellcheck="false" aria-label="Buscar">
+					<div id="typewriter" aria-hidden="true"><span id="tw-text"></span><span class="tw-caret"></span></div>
+				</div>
+				<button type="button" id="engine-btn" class="engine-btn" title="Trocar buscador"></button>
+				<button type="submit" class="go-btn" aria-label="Buscar">
+					<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+			</div>
+			<div id="engine-menu" class="engine-menu" hidden></div>
+		</form>
+
+		<section id="portals-section">
+			<div class="section-head">
+				<h2>Portais Digitais</h2>
+				<button type="button" class="ghost-btn" data-add-portal title="Adicionar portal">+ Adicionar</button>
+			</div>
+			<div id="portals-grid" class="portals-grid"></div>
+		</section>
+	</main>
+
+	<!-- ===== Dock lateral de apps ===== -->
+	<aside id="app-dock">
+		<nav><ul id="app-list"></ul></nav>
+	</aside>
+
+	<!-- ===== Anotações rápidas (post-its móveis) ===== -->
+	<div id="notes-layer"></div>
+	<button id="add-note" title="Nova anotação rápida" aria-label="Nova anotação">
+		<svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v9.2a1 1 0 0 1-.29.71l-6.79 6.79a1 1 0 0 1-.71.3H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm9 17.09L20.09 14H15a1 1 0 0 0-1 1v5.09Z"/></svg>
+	</button>
+
+	<!-- ===== Botão de ajustes ===== -->
+	<button id="open-settings" title="Personalizar (S)" aria-label="Abrir ajustes">
+		<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94a7.9 7.9 0 0 0 .06-.94 7.9 7.9 0 0 0-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7 7 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.74 8.3a.5.5 0 0 0 .12.64l2.03 1.58a7.9 7.9 0 0 0 0 1.88L2.86 13.9a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"/></svg>
+	</button>
+
+	<!-- ===== Painel de ajustes (renderizado via JS) ===== -->
+	<div id="settings-backdrop" hidden style="display:none"></div>
+	<aside id="settings-panel" hidden style="display:none" aria-label="Ajustes"></aside>
+
+	<!-- ===== Modal de edição de item (app/portal) ===== -->
+	<div id="modal-backdrop" hidden style="display:none"></div>
+	<div id="edit-modal" hidden style="display:none"></div>
+
+	<script src="assets/app.js?v=4"></script>
+</body>
+</html>

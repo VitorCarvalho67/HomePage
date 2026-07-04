@@ -1,0 +1,26 @@
+services:
+  vitorhome:
+    image: nginx:alpine
+    container_name: vitorhome
+    restart: unless-stopped
+    # Serve a pasta como site estático; nginx.conf esconde os arquivos de infra.
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8886:80"
+    networks:
+      - npm_network
+    # O watchdog do host (cron) reinicia containers "unhealthy".
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  # mesma rede do nginx-proxy-manager, para ele alcançar 'vitorhome:80'
+  npm_network:
+    external: true
+    name: solveweb-site_web
